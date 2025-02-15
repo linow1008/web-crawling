@@ -1,0 +1,21 @@
+// schema.prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model GdwebData {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  title      String
+  date       String
+  views      Int
+  detail_url String
+  image_url  String
+  status     String? 
+
+  @@map("gdweb_data")
+}
